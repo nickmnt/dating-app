@@ -13,7 +13,7 @@ using Moq;
 
 namespace Test;
 
-public class UnitTest1
+public class LikesControllerTest
 {
     [Fact]
     public async Task AddLike_ValidUsername_ReturnsOkResult()
