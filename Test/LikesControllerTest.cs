@@ -183,5 +183,49 @@ public class LikesControllerTest
         var okResult = Assert.IsType<OkResult>(result);
         Assert.NotNull(okResult);
     }
+    
+    [Fact]
+    public async Task AddLike_ValidButSaveFail_ReturnsBadRequestResult()
+    {
+        // Arrange
+        var sourceUsername = "sourceUsername";
+        var username = "testUser";
+        var sourceUserId = 10;
+        var likedUserId = 2;
+
+        var userRepositoryMock = new Mock<IUserRepository>();
+        userRepositoryMock.Setup(repo => repo.GetUserByUsernameAsync(username))
+            .ReturnsAsync(new AppUser { UserName = username, Id = likedUserId });
+
+        var likesRepositoryMock = new Mock<ILikesRepository>();
+        likesRepositoryMock.Setup(repo => repo.GetUserWithLikes(sourceUserId))
+            .ReturnsAsync(new AppUser {UserName = sourceUsername, LikedUsers = new List<UserLike>()});
+        likesRepositoryMock.Setup(repo => repo.GetUserLike(sourceUserId, likedUserId))
+            .ReturnsAsync((UserLike)null);
+
+        var unitOfWorkMock = new Mock<IUnitOfWork>();
+        unitOfWorkMock.SetupGet(uow => uow.UserRepository).Returns(userRepositoryMock.Object);
+        unitOfWorkMock.SetupGet(uow => uow.LikesRepository).Returns(likesRepositoryMock.Object);
+        unitOfWorkMock.Setup(uow => uow.Complete()).ReturnsAsync(false);
+
+        
+        var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+        {
+            new Claim(ClaimTypes.Name, "example name"),
+            new Claim(ClaimTypes.NameIdentifier, "10"),
+            new Claim("custom-claim", "example claim value"),
+        }, "mock"));
+
+        var controller = new LikesController(unitOfWorkMock.Object);
+        
+        controller.ControllerContext.HttpContext = new DefaultHttpContext() { User = user };
+
+        // Act
+        var result = await controller.AddLike(username);
+
+        // Assert
+        var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal("Failed to like user", badRequestResult.Value);
+    }
 
 }
