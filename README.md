@@ -1,5 +1,18 @@
 # Dating App
 
+## Screenshots
+
+<details>
+  <summary>Screenshots (Hidden) - Click to open!</summary>
+  <img src="https://github.com/nickmnt/dating-app/blob/main/screenshots/AdminPanel.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/dating-app/blob/main/screenshots/Chat.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/dating-app/blob/main/screenshots/Messenges.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/dating-app/blob/main/screenshots/Matches.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/dating-app/blob/main/screenshots/Login.png?raw=true" alt="Screenshot"></img>
+</details>
+
+## Summary
+
 Welcome to Dating App! This is a modern web application built with Angular and .NET, designed to connect people and foster meaningful relationships.
 
 ## Table of Contents
