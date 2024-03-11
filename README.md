@@ -6,7 +6,7 @@
   <summary>Screenshots (Hidden) - Click to open!</summary>
   <img src="https://github.com/nickmnt/dating-app/blob/main/screenshots/AdminPanel.png?raw=true" alt="Screenshot"></img>
   <img src="https://github.com/nickmnt/dating-app/blob/main/screenshots/Chat.png?raw=true" alt="Screenshot"></img>
-  <img src="https://github.com/nickmnt/dating-app/blob/main/screenshots/Messenges.png?raw=true" alt="Screenshot"></img>
+  <img src="https://github.com/nickmnt/dating-app/blob/main/screenshots/Messages.png?raw=true" alt="Screenshot"></img>
   <img src="https://github.com/nickmnt/dating-app/blob/main/screenshots/Matches.png?raw=true" alt="Screenshot"></img>
   <img src="https://github.com/nickmnt/dating-app/blob/main/screenshots/Login.png?raw=true" alt="Screenshot"></img>
 </details>
